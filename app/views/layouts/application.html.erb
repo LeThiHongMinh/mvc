@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Backend</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <div><%= notice %></div>
+    <div><%= alert %></div>
+    <%= link_to root_path do %>
+      <h1>Discussions</h1>
+    <% end  %>
+    <% if user_signed_in? %>
+      <%= link_to 'New Discussion', new_discussion_path%>
+      <%= link_to 'New Category', new_category_path%>
+      <%= button_to "Log out", session_path, method: :delete %>
+    <% else %>
+      <%= link_to "Sign up", new_registration_path%>
+      <%= link_to "Log in", new_session_path%>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>

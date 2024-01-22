@@ -1,0 +1,5 @@
+<h1>Edit Comment</h1>
+<%= simple_form_for([@discussion, @comment]) do |f| %>
+<%= f.input :comment, wrapper: false %>
+<%= f.button :submit, "Update comment" %>
+<% end %>

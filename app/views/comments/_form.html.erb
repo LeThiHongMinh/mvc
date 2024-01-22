@@ -1,0 +1,4 @@
+<%= simple_form_for([@discussion, @discussion.comments.build], remote: true) do |f| %>
+<%= f.input :comment, wrapper: false %>
+<%= f.button :submit, 'Leave a reply'%>
+<% end %>

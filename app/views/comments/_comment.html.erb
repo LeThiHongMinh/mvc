@@ -1,0 +1,31 @@
+<div>
+  <article>
+    <div>
+      <div>
+        <p>
+          <strong><%= comment.user.name %></strong> <small><%= time_ago_in_words(comment.created_at) %></small>
+          <br/>
+        </p>
+        <%= markdown(comment.comment) %>
+      </div>
+      <% if comment_author(comment) %>
+      <nav>
+        <div>
+          <a>
+            <%= link_to edit_discussion_comment_path(comment.discussion, comment) do %>
+            <% end %>
+          </a>
+          <a>
+            <%= link_to [comment.discussion, comment],
+                data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } do %>
+            <% end %>
+          </a>
+        </div>
+      </nav>
+      <% end %>
+    </div>
+  </article>
+</div>

@@ -1,0 +1,5 @@
+<%= simple_form_for(@category) do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :category, wrapper: false %>
+  <%= f.button :submit %>
+<% end %>

@@ -1,0 +1,11 @@
+<div>
+  <h2><%= @category.category %></h2>
+  <%= link_to 'Edit Category', edit_category_path(@category)%>
+</div>
+<hr />
+
+
+<div>
+ <%= render 'partial/discussions' %>
+ <%= render 'discussions/upbar' %>
+</div>

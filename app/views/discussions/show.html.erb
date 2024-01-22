@@ -1,0 +1,41 @@
+<div>
+  <div>
+    <h1><%= @discussion.title %></h1>
+    <h3>by <%= @discussion.user.name %> in <%= link_to @discussion.category.category, @discussion.category %></h3>
+    <div>
+      <div></div>
+      <div>
+        <% if discussion_author(@discussion) %>
+        <div>
+            <%= link_to 'Edit Discussion', edit_discussion_path(@discussion) %>
+            <%= link_to 'Delete', discussion_path(@discussion), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %>
+        </div>
+        <% end %>
+        <p><%= @discussion.content %></p>
+      </div>
+    </div>
+
+    <h2><%= @discussion.comments.count %> Comments</h2>
+
+    <div id="discussion-comments">
+      <%= render @discussion.comments %>
+    </div>
+
+    <hr />
+
+    <h3>Leave a comment</h3>
+    <% if user_signed_in? %>
+      <%= render 'comments/form' %>
+    <% else %>
+    <p>To comment you need to <%= link_to 'login', new_session_path %>. Don't have an account?
+      <%= link_to 'Sign up', new_registration_path %> for one.</p>
+    <% end %>
+
+  </div>
+
+  <%= render 'upbar' %>
+
+</div>

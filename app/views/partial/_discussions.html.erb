@@ -1,0 +1,28 @@
+<div>
+  <h3>Latest Discussions</h3>
+  <% @discussions.each do |discussion| %>
+    <div>
+      <%= link_to discussion do %>
+        <h3><%= discussion.title %></h3>
+      <% end %>
+      <%= truncate(strip_markdown(discussion.content), length: 200) %>
+      <p>
+        <em>
+          <small>
+            Posted <%= time_ago_in_words(discussion.created_at) %> ago in 
+            <% if discussion.category %>
+              <%= link_to discussion.category.category, discussion.category %>
+            <% end %>
+            by <%= discussion.user.name %>
+          </small>
+        </em>
+      </p>
+      <% if discussion_author(discussion) %>
+  <div>
+    <%= link_to 'Edit', edit_discussion_path(discussion), class: 'button' %>
+    <%= link_to 'Delete', discussion, method: :delete, data: { confirm: 'Are you sure' }, class: 'button' %>
+  </div>
+<% end %>
+    </div>
+  <% end %>
+</div>
