@@ -6,7 +6,9 @@ ruby "3.3.0"
 gem "rails", "~> 7.1.3"
 gem 'simple_form'
 gem 'redcarpet'
-
+gem 'webpacker', '~> 5.0'
+gem 'jsbundling-rails'
+gem 'cssbundling-rails'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 # Guard
